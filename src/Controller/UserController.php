@@ -39,6 +39,11 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'Utilisateur '. $user->getUsername() .' ajouté avec succès'
+            );
+
             return $this->redirectToRoute('user_index');
         }
 
